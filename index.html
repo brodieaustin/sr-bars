@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>Bars test</title>
+  <style>
+    *{box-sizing: border-box;}
+    body{
+      margin: 10%;
+      background-color: #008C95;
+    }
+    ol{
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .bar{
+      position: relative;
+      display: inline-block;
+      height: 10em;
+      width: 1em;
+      margin: 1em .2em;
+      background-color: #fff;
+    }
+    .one{
+      top: 10px;
+    }
+    .two{
+      top: 20px;
+    }
+
+    .marked > .meter{
+      top: 0;
+    }
+
+    .meter{
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 100%;
+      background-color: yellow;
+      transition: top .9s ease-out;
+      animation-delay: 1s;
+    }
+
+    .add-log{
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .add-log:hover{
+      background-color: #ccc;
+    }
+
+    .add-log span{
+      display: block;
+      transform: rotate(270deg);
+    }
+
+    </style>
+</head>
+<body>
+  <ol>
+    <li class="bar"><span class="meter"><span></li>
+    <li class="bar one"><span class="meter"><span></li>
+    <li class="bar two"><span class="meter"><span></li>
+    <li class="bar"><span class="meter"><span></li>
+    <li class="bar one"><span class="meter"><span></li>
+    <li class="bar two"><span class="meter"><span></li>
+    <li class="bar"><span class="meter"><span></li>
+    <li class="bar one"><span class="meter"><span></li>
+    <li class="bar two"><span class="meter"><span></li>
+    <li class="bar"><span class="meter"><span></li>
+    <li class="bar one"><span class="meter"><span></li>
+    <li class="bar two"><span class="meter"><span></li>
+    <li class="bar"><span class="meter"><span></li>
+    <li class="bar one"><span class="meter"><span></li>
+    <li class="bar two"><span class="meter"><span></li>
+    <li class="bar"><span class="meter"><span></li>
+    <li class="bar one"><span class="meter"><span></li>
+    <li class="bar two"><span class="meter"><span></li>
+    <li class="bar"><span class="meter"><span></li>
+    <li class="bar one"><span class="meter"><span></li>
+    <li class="bar two"><span class="meter"><span></li>
+    <li class="bar"><span class="meter"><span></li>
+    <li class="bar one"><span class="meter"><span></li>
+    <li class="bar two"><span class="meter"><span></li>
+    <li class="bar"><span class="meter"><span></li>
+    <li class="bar one"><span class="meter"><span></li>
+    <li class="bar two"><span class="meter"><span></li>
+    <li class="bar"><span class="meter"><span></li>
+    <li class="bar one"><span class="meter"><span></li>
+    <li class="bar two"><span class="meter"><span></li>
+    <li class="bar"><span class="meter"><span></li>
+    <li class="bar one"><span class="meter"><span></li>
+    <li class="bar two"><span class="meter"><span></li>
+    <li class="bar"><span class="meter"><span></li>
+    <li class="bar one"><span class="meter"><span></li>
+    <li class="bar two"><span class="meter"><span></li>
+    <li class="bar"><span class="meter"><span></li>
+    <li class="bar one"><span class="meter"><span></li>
+    <li class="bar two"><span class="meter"><span></li>
+    <li class="bar"><span class="meter"><span></li>
+    <li class="bar one"><span class="meter"><span></li>
+    <li class="bar two"><span class="meter"><span></li>
+    <li class="bar"><span class="meter"><span></li>
+    <li class="bar one"><span class="meter"><span></li>
+  </ol>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      var goal = 900;
+      var step = 20;
+      var read = 100;
+      var completed = Math.floor(read / step);
+      var bars = $('.bar');
+      var i = 0;
+
+      var interval = setInterval(function(){
+        $(bars[i]).addClass('marked');
+        i++;
+        if (i > completed){
+          clearInterval(interval);
+
+          $(bars[i]).addClass('button').append('<button class="add-log"><span>Add</span></button>');
+          $('.button').delegate('button', 'click', function(){
+            alert('hello')
+          });
+        }
+      }, 600)
+
+    });
+  </script>
+</body>
+</html>
