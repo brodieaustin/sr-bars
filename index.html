@@ -2,12 +2,51 @@
 <head>
   <meta charset="utf-8">
   <title>Bars test</title>
+  <link href='http://fonts.googleapis.com/css?family=Raleway:300' rel='stylesheet' type='text/css'>
   <style>
     *{box-sizing: border-box;}
     body{
       margin: 10%;
       background-color: #008C95;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
     }
+
+    label{
+      display: block;
+      color: #fff;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      font-size: 24px;
+    }
+
+    input{
+      display: inline-block;
+      padding: .5em 1em;
+      border: 0;
+      font-size: 100%;
+      font-family: inherit;
+    }
+
+    input[type=submit]{
+      background: yellow;
+      cursor: pointer;
+      transition: all .2s ease;
+    }
+
+    input[type=submit]:hover{
+      background: rgba(255, 255, 0, .6);
+    }
+
+    #minutes-read{
+      margin: 2em auto;
+      padding: 2em;
+      border-bottom: 4px solid yellow;
+      text-align: center;
+    }
+
+
+
     ol{
       list-style: none;
       padding: 0;
@@ -53,22 +92,34 @@
       width: 100%;
       padding: 0;
       border: 0;
-      background: transparent;
+      background: rgba(255, 255, 0, .2);
       cursor: pointer;
+      transition: all .2s ease;
     }
 
     .add-log:hover{
-      background-color: #ccc;
+      background: rgba(255, 255, 0, .4);
     }
 
     .add-log span{
+      position: absolute;
+      top: -2em;
+      right: -.3em;
       display: block;
-      transform: rotate(270deg);
+      text-transform: uppercase;
+      color: yellow;
     }
 
     </style>
 </head>
 <body>
+  <form id="minutes-read">
+    <div>
+      <label>How many minutes have you read?</label>
+      <input type="text" id="minutes">
+      <input type="submit" value="Go">
+    </div>
+  </form>
   <ol>
     <li class="bar"><span class="meter"><span></li>
     <li class="bar one"><span class="meter"><span></li>
@@ -120,23 +171,37 @@
     $(document).ready(function(){
       var goal = 900;
       var step = 20;
-      var read = 100;
-      var completed = Math.floor(read / step);
+      var read;
+      var completed;
       var bars = $('.bar');
       var i = 0;
 
-      var interval = setInterval(function(){
-        $(bars[i]).addClass('marked');
-        i++;
-        if (i > completed){
-          clearInterval(interval);
+      $('#minutes-read').submit(function(){
+        i = 0;
 
-          $(bars[i]).addClass('button').append('<button class="add-log"><span>Add</span></button>');
-          $('.button').delegate('button', 'click', function(){
-            alert('hello')
-          });
+        $(".add-log").remove();
+        $(bars).removeClass('marked');
+        read = $('#minutes').val();
+        completed = Math.floor(read / step);
+
+        console.log(completed)
+
+        if (completed !== 0){
+          var interval = setInterval(function(){
+            $(bars[i]).addClass('marked');
+            i++;
+            if (i > (completed - 1)){
+              clearInterval(interval);
+
+              $(bars[i]).addClass('button').append('<button class="add-log"><span>Add</span></button>');
+              $('.button').delegate('button', 'click', function(){
+                alert('hello')
+              });
+            }
+          }, 600);
         }
-      }, 600)
+        return false;
+      });
 
     });
   </script>
