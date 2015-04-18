@@ -2,6 +2,7 @@
 <head>
   <meta charset="utf-8">
   <title>Bars test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href='http://fonts.googleapis.com/css?family=Raleway:300' rel='stylesheet' type='text/css'>
   <style>
     *{box-sizing: border-box;}
@@ -48,9 +49,11 @@
 
 
     ol{
+      width:60%;
+      max-width: 580px;
       list-style: none;
       padding: 0;
-      margin: 0;
+      margin: 0 auto;
     }
 
     .bar{
@@ -68,11 +71,7 @@
       top: 20px;
     }
 
-    .marked > .meter{
-      top: 0;
-    }
-
-    .meter{
+    .bar:after{
       content: "";
       position: absolute;
       bottom: 0;
@@ -81,7 +80,10 @@
       top: 100%;
       background-color: yellow;
       transition: top .9s ease-out;
-      animation-delay: 1s;
+    }
+
+    .marked:after{
+      top: 0;
     }
 
     .add-log{
@@ -121,50 +123,50 @@
     </div>
   </form>
   <ol>
-    <li class="bar"><span class="meter"><span></li>
-    <li class="bar one"><span class="meter"><span></li>
-    <li class="bar two"><span class="meter"><span></li>
-    <li class="bar"><span class="meter"><span></li>
-    <li class="bar one"><span class="meter"><span></li>
-    <li class="bar two"><span class="meter"><span></li>
-    <li class="bar"><span class="meter"><span></li>
-    <li class="bar one"><span class="meter"><span></li>
-    <li class="bar two"><span class="meter"><span></li>
-    <li class="bar"><span class="meter"><span></li>
-    <li class="bar one"><span class="meter"><span></li>
-    <li class="bar two"><span class="meter"><span></li>
-    <li class="bar"><span class="meter"><span></li>
-    <li class="bar one"><span class="meter"><span></li>
-    <li class="bar two"><span class="meter"><span></li>
-    <li class="bar"><span class="meter"><span></li>
-    <li class="bar one"><span class="meter"><span></li>
-    <li class="bar two"><span class="meter"><span></li>
-    <li class="bar"><span class="meter"><span></li>
-    <li class="bar one"><span class="meter"><span></li>
-    <li class="bar two"><span class="meter"><span></li>
-    <li class="bar"><span class="meter"><span></li>
-    <li class="bar one"><span class="meter"><span></li>
-    <li class="bar two"><span class="meter"><span></li>
-    <li class="bar"><span class="meter"><span></li>
-    <li class="bar one"><span class="meter"><span></li>
-    <li class="bar two"><span class="meter"><span></li>
-    <li class="bar"><span class="meter"><span></li>
-    <li class="bar one"><span class="meter"><span></li>
-    <li class="bar two"><span class="meter"><span></li>
-    <li class="bar"><span class="meter"><span></li>
-    <li class="bar one"><span class="meter"><span></li>
-    <li class="bar two"><span class="meter"><span></li>
-    <li class="bar"><span class="meter"><span></li>
-    <li class="bar one"><span class="meter"><span></li>
-    <li class="bar two"><span class="meter"><span></li>
-    <li class="bar"><span class="meter"><span></li>
-    <li class="bar one"><span class="meter"><span></li>
-    <li class="bar two"><span class="meter"><span></li>
-    <li class="bar"><span class="meter"><span></li>
-    <li class="bar one"><span class="meter"><span></li>
-    <li class="bar two"><span class="meter"><span></li>
-    <li class="bar"><span class="meter"><span></li>
-    <li class="bar one"><span class="meter"><span></li>
+    <li class="bar"></li>
+    <li class="bar one"></li>
+    <li class="bar two"></li>
+    <li class="bar"></li>
+    <li class="bar one"></li>
+    <li class="bar two"></li>
+    <li class="bar"></li>
+    <li class="bar one"></li>
+    <li class="bar two"></li>
+    <li class="bar"></li>
+    <li class="bar one"></li>
+    <li class="bar two"></li>
+    <li class="bar"></li>
+    <li class="bar one"></li>
+    <li class="bar two"></li>
+    <li class="bar"></li>
+    <li class="bar one"></li>
+    <li class="bar two"></li>
+    <li class="bar"></li>
+    <li class="bar one"></li>
+    <li class="bar two"></li>
+    <li class="bar"></li>
+    <li class="bar one"></li>
+    <li class="bar two"></li>
+    <li class="bar"></li>
+    <li class="bar one"></li>
+    <li class="bar two"></li>
+    <li class="bar"></li>
+    <li class="bar one"></li>
+    <li class="bar two"></li>
+    <li class="bar"></li>
+    <li class="bar one"></li>
+    <li class="bar two"></li>
+    <li class="bar"></li>
+    <li class="bar one"></li>
+    <li class="bar two"></li>
+    <li class="bar"></li>
+    <li class="bar one"></li>
+    <li class="bar two"></li>
+    <li class="bar"></li>
+    <li class="bar one"></li>
+    <li class="bar two"></li>
+    <li class="bar"></li>
+    <li class="bar one"></li>
   </ol>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script>
@@ -198,7 +200,7 @@
                 alert('hello')
               });
             }
-          }, 600);
+          }, 300);
         }
         return false;
       });
