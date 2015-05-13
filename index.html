@@ -8,9 +8,16 @@
     *{box-sizing: border-box;}
     body{
       margin: 2%;
-      background-color: #008C95;
+      background-color: #008aaa;
       font-family: 'Raleway', sans-serif;
       font-weight: 300;
+    }
+
+
+    form div{
+      width: 80%;
+      margin: auto auto 1em;
+      text-align: center;
     }
 
     label{
@@ -18,7 +25,7 @@
       color: #fff;
       margin-bottom: 6px;
       text-transform: uppercase;
-      font-size: 24px;
+      font-size: 18px;
     }
 
     input{
@@ -30,16 +37,14 @@
     }
 
     input[type=submit]{
-      background: yellow;
+      background: #c8b364;
       cursor: pointer;
       transition: all .2s ease;
     }
 
     input[type=submit]:hover{
-      background: rgba(255, 255, 0, .6);
+      background: rgba(255, 255, 255, .6);
     }
-
-    form div{margin-bottom: 1em;}
 
     #minutes-read{
       margin-bottom: 2em;
@@ -60,7 +65,7 @@
     .bar{
       position: relative;
       display: inline-block;
-      height: 10em;
+      height: 7em;
       width: 1em;
       margin: 1em .1em;
       background-color: #fff;
@@ -72,53 +77,50 @@
       top: 20px;
     }
 
-    .bar:after{
+    .reading{
       content: "";
       position: absolute;
-      bottom: 0;
+      bottom: 30%;
       left: 0;
       right: 0;
       top: 100%;
-      background-color: yellow;
-      transition: top .9s ease-out;
+      background-color: #c8b364;
+      transition: top 2s ease-out;
     }
 
-    .marked:after{
+    .bar.one .reading{
+      bottom: calc(30% + 10px);
+    }
+
+    .bar.two .reading{
+      bottom: calc(30% + 20px);
+    }
+
+    .reading.completed{
       top: 0;
     }
 
-    .add-log{
+    .exercise{
+      content: "";
       position: absolute;
-      top: 0;
+      bottom: 100%;
       left: 0;
-      height: 100%;
-      width: 100%;
-      padding: 0;
-      border: 0;
-      background: rgba(255, 255, 0, .2);
-      cursor: pointer;
-      transition: all .2s ease;
-      box-shadow: 1px 1px 1px #aaa;
-    }
-
-    .add-log:hover{
-      background: rgba(255, 255, 0, .4);
-    }
-
-    .add-log span{
-      position: absolute;
-      top: -3.5em;
       right: 0;
-      display: block;
-      text-transform: uppercase;
-      color: yellow;
+      top: 70%;
+      background-color: #f0ead5;
+      transition: bottom 2s ease-out;
     }
 
-    .add-log span:after{
-      display: block;
-      content: " ";
-      height: 2em;
-      border-right: 1px dotted yellow;
+    .bar.one .exercise{
+      top: calc(70% - 10px);
+    }
+
+    .bar.two .exercise{
+      top: calc(70% - 20px);
+    }
+
+    .exercise.completed{
+      bottom: 0;
     }
 
     @media screen and (min-width: 600px){
@@ -127,8 +129,8 @@
       }
 
       ol{
-        width:60%;
-        max-width: 580px;
+        width:100%;
+        max-width: 700px;
         text-align: left;
       }
     }
@@ -136,92 +138,224 @@
     </style>
 </head>
 <body>
-  <form id="minutes-read">
-    <div>
-      <label>How many minutes have you read?</label>
-      <input type="text" id="minutes">
-      <input type="submit" value="Go">
-    </div>
+  <form id="log">
+      <div>
+        <label>How many minutes have you read?</label>
+        <input type="text" id="minutes-reading">
+      </div>
+      <div>
+        <label>How many minutes have you exercised?</label>
+        <input type="text" id="minutes-exercise">
+      </div>
+      <div>
+        <input type="submit" value="Go">
+      </div>
   </form>
   <ol>
-    <li class="bar"></li>
-    <li class="bar one"></li>
-    <li class="bar two"></li>
-    <li class="bar"></li>
-    <li class="bar one"></li>
-    <li class="bar two"></li>
-    <li class="bar"></li>
-    <li class="bar one"></li>
-    <li class="bar two"></li>
-    <li class="bar"></li>
-    <li class="bar one"></li>
-    <li class="bar two"></li>
-    <li class="bar"></li>
-    <li class="bar one"></li>
-    <li class="bar two"></li>
-    <li class="bar"></li>
-    <li class="bar one"></li>
-    <li class="bar two"></li>
-    <li class="bar"></li>
-    <li class="bar one"></li>
-    <li class="bar two"></li>
-    <li class="bar"></li>
-    <li class="bar one"></li>
-    <li class="bar two"></li>
-    <li class="bar"></li>
-    <li class="bar one"></li>
-    <li class="bar two"></li>
-    <li class="bar"></li>
-    <li class="bar one"></li>
-    <li class="bar two"></li>
-    <li class="bar"></li>
-    <li class="bar one"></li>
-    <li class="bar two"></li>
-    <li class="bar"></li>
-    <li class="bar one"></li>
-    <li class="bar two"></li>
-    <li class="bar"></li>
-    <li class="bar one"></li>
-    <li class="bar two"></li>
-    <li class="bar"></li>
-    <li class="bar one"></li>
-    <li class="bar two"></li>
-    <li class="bar"></li>
-    <li class="bar one"></li>
+    <li class="bar">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar one">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar two">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar one">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar two">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar one">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar two">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar one">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar two">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar one">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar two">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar one">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar two">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar one">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar two">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar one">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar two">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar one">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar two">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar one">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar two">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar one">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar two">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar one">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar two">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar one">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar two">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar one">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar two">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
+    <li class="bar one">
+			<span class="reading"></span>
+			<span class="exercise"></span>
+		</li>
   </ol>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
   <script>
     $(document).ready(function(){
-      var goal = 900;
-      var step = 20;
-      var read;
+      var activities = {"activities": [{"type":"reading","step":"20","goal":"900"},{"type":"exercise","step":"15","goal":"675"}]}
+      var activity;
+      var bars;
+      var quantity;
       var completed;
-      var bars = $('.bar');
-      var i = 0;
 
-      $('#minutes-read').submit(function(){
-        i = 0;
+      $('#log').submit(function(e){
 
-        $(".add-log").remove();
-        $(bars).removeClass('marked');
-        read = $('#minutes').val();
-        completed = Math.floor(read / step);
+        e.preventDefault();
+        for (a in activities.activities){
 
-        console.log(completed)
+          activity = activities.activities[a];
 
-        if (completed !== 0){
-          var interval = setInterval(function(){
-            $(bars[i]).addClass('marked');
-            i++;
-            if (i > (completed - 1)){
-              clearInterval(interval);
+          bars = $("." + activity.type)
+          $(bars).removeClass('marked');
 
-              $(bars[i]).addClass('button').append('<button class="add-log"><span>Add</span></button>');
-              $('.button').delegate('button', 'click', function(){
-                alert('hello')
-              });
+          quantity = $('#minutes-' + activity.type).val();
+          completed = Math.floor(quantity / activity.step);
+
+          if (completed !== 0){
+            for (i = 0; i < (completed - 1); i++){
+              $(bars[i]).addClass('completed');
             }
-          }, 300);
+          }
         }
         return false;
       });
